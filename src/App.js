@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {RoomList} from './components/RoomList';
 import * as firebase from 'firebase';
+import RoomList from './components/RoomList';
+
 
 var config = {
   apiKey: "AIzaSyDa1WlNms3Esx6pVWf6KMgxVrb6wOJs9wA",
@@ -15,13 +16,14 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      <RoomList/>
-      </div>
-    );
-  }
+render() {
+   return (
+     <div className="App">
+       <RoomList firebase = {firebase}/>
+     </div>
+   );
+ }
 }
+
 
 export default App;
