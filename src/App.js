@@ -73,7 +73,6 @@ render() {
             </main>
         </div>
      </div>
-
    );
  }
 }

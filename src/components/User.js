@@ -51,7 +51,6 @@ render (){
    </section>
  );
 }
-
 }
 
 export default User;
