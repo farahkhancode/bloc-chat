@@ -48,13 +48,30 @@
 .room-list{
   float:left;
   width:350px;
-  background:#F0F0F0
+  background:#F0F0F0;
+  padding-bottom: 500px;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+.current-chat-message{
+  text-align:left;
+  padding-bottom:25px;
+}
+
+
+.current-username{
+  color: blue;
+  font-weight: bold;
+  text-align: left;
 }
 .message-list{
-
    float:right;
    width:610px;
-   background:yellow;
+   padding-bottom: 500px;
 }
 
 .newroomform{
@@ -64,7 +81,7 @@
 .active-chat-room{
   float:right;
   width:610px;
-  background:yellow;
+  padding-bottom: 500px;
 }
 
 

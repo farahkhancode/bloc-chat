@@ -8,6 +8,7 @@ class User extends Component{
 
 
     this.signIn= this.signIn.bind(this);
+    this.signOut= this.signOut.bind(this);
 };
 
  componentDidMount() {
@@ -18,24 +19,39 @@ class User extends Component{
 
 signIn(){
   const provider = new this.props.firebase.auth.GoogleAuthProvider();
-  this.props.firebase.auth().signInWithPopup( provider );
+  this.props.firebase.auth().signInWithPopup(provider).then((result) => {
+    const user = result.user;
+    this.props.setUser(user);
   console.log("logged in");
+})
 
 }
 
 signOut(){
-  this.props.firebase.auth().signOut();
+  this.props.firebase.auth().signOut().then((result) => {
+      console.log("logged out");
+      this.props.setUser(null);
+        })
 }
 
 
 render (){
-
+  const activeUser = this.props.user
   return(
- <button onClick={this.signIn}>'Log In'</button>
- <button onClick={this.signOut}>'Log Out'</button>
+    <section>
+      <div>
+        <h3> Welcome, {this.props.activeUser}!</h3>
 
-  )
+        {this.props.activeUser === 'Guest' ?
+          <button onClick={this.signIn}>Log In</button>
+          :
+          <button onClick={this.signOut}>Log Out</button>
+        }
+      </div>
+   </section>
+ );
 }
 
+}
 
-export default MessageList;
+export default User;

@@ -34,8 +34,13 @@ render() {
     const messageList = this.state.messages
     .filter(message => message.roomId === activeRoom)
     .map(message => {
-      return <li className="current-chat-message" key={message.key}>{message.content}</li>
+      return <ul>
+         
+         <li className="current-chat-message" key={message.key}>{message.content}</li>
+
+         </ul>
     })
+
     return(
       <div className="chat-messages">
         <ul>{messageList}</ul>
