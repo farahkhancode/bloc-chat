@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width:960px;
+  margin:20px auto;
 }
 
 .App-logo {
@@ -16,11 +18,56 @@
 
 .App-title {
   font-size: 1.5em;
+  text-align: left;
 }
 
 .App-intro {
   font-size: large;
 }
+
+.room-column{
+    float:left;
+    width:350px;
+    background:#d2d2d2;
+}
+
+.rooms{
+  color: #707070;
+  text-align:left;
+}
+
+.bloc-chat{
+  font-size:30px;
+  font-family: helvetica;
+}
+#container{
+  width:960px;
+  margin:20px auto;
+}
+
+.room-list{
+  float:left;
+  width:350px;
+  background:#F0F0F0
+}
+.message-list{
+
+   float:right;
+   width:610px;
+   background:yellow;
+}
+
+.newroomform{
+  align:center;
+}
+
+
+.active-chat-room{
+  float:right;
+  width:610px;
+  background:yellow;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
