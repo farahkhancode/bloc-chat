@@ -47,7 +47,6 @@ createRoom() {
 
 }
 
-
   render() {
     const activeRoom =this.props.activeRoom;
     return (

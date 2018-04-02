@@ -29,7 +29,6 @@ class MessageList extends Component{
 }
 
 
-
 render() {
   const activeRoom = this.props.activeRoom;
     const messageList = this.state.messages
