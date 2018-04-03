@@ -54,8 +54,8 @@ createRoom() {
           <h2 className="app-title"> Bloc Chat </h2>
           <div className="rooms">
           <form onSubmit={this.handleSubmit}>
-            <input type ="text" value={this.state.newRoom} onChange={this.handleChange}/>
-            <button type="submit" onClick={this.createRoom}>Create Room</button>
+            <input type ="text" placeholder="New Room" value={this.state.newRoom} onChange={this.handleChange}/>
+            <button type="submit"  onClick={this.createRoom}>Create</button>
           </form>
               <ul>
                   {this.state.rooms.map((room, index)=> {return (

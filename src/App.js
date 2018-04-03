@@ -66,7 +66,7 @@ render() {
                 (<MessageList
                   firebase={firebase}
                   activeRoom={this.state.activeRoom.key}
-                  user={this.setUser} />)
+                  user={this.state.user.displayName} />)
                 :
                   (null)
               }
