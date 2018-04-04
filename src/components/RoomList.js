@@ -17,6 +17,7 @@ class RoomList extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createRoom = this.createRoom.bind(this);
+    this.deleteRoom = this.deleteRoom.bind(this);
   };
 
     componentDidMount() {
@@ -44,7 +45,14 @@ createRoom() {
     this.roomsRef.push({
       name: this.state.newRoom
   });
+}
 
+deleteRoom(event){
+  const remainingRooms = this.state.rooms
+  .filter(room=> room.key!== event.target.value);
+  this.setState({room : remainingRooms});
+  console.log("room deleted");
+};
 
   render() {
     const activeRoom =this.props.activeRoom;
@@ -52,13 +60,16 @@ createRoom() {
        <section className="room-list">
           <h2 className="app-title"> Bloc Chat </h2>
           <div className="rooms">
-          <form onSubmit={this.handleSubmit}>
+          <form className="createnew" onSubmit={this.handleSubmit}>
             <input type ="text" placeholder="New Room" value={this.state.newRoom} onChange={this.handleChange}/>
             <button type="submit"  onClick={this.createRoom}>Create</button>
           </form>
-              <ul>
+              <ul className="all-rooms">
                   {this.state.rooms.map((room, index)=> {return (
-                  <li key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</li>
+                  <section>
+                  <div key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</div>
+                  <button onClick= {(e)=>this.deleteRoom(room.key)}>X</button>
+                  </section>
                 )})}
               </ul>
           </div>
