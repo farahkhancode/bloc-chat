@@ -25,6 +25,7 @@ class RoomList extends Component {
       const room = snapshot.val();
       room.key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) })
+      console.log(snapshot);
    });
 
  }
@@ -39,6 +40,7 @@ handleChange(e){
 
 handleSubmit(e){
     e.preventDefault();
+    if (!this.state.newRoom) { return }
   }
 
 createRoom() {
@@ -46,28 +48,29 @@ createRoom() {
       name: this.state.newRoom
   });
 }
-deleteRoom(roomKey){
-const room = this.props.firebase.database().ref('rooms' + roomKey);
-const remainingRooms = this.state.rooms
-.filter(room => room.key === !roomKey);
-this.setState({room: remainingRooms});
-}
+
+deleteRoom(roomKey) {
+          const room = this.props.firebase.database().ref('rooms' + roomKey);
+          const remainingRooms= this.state.rooms
+          .filter(room => room.key !== roomKey);
+          this.setState({ rooms: remainingRooms});
+      }
 
   render() {
     return (
        <section className="room-list">
           <h2 className="app-title"> Bloc Chat </h2>
           <div className="rooms">
-          <form onSubmit={this.handleSubmit}>
+          <form className="createnew" onSubmit={this.handleSubmit}>
             <input type ="text" placeholder="New Room" value={this.state.newRoom} onChange={this.handleChange}/>
             <button type="submit"  onClick={this.createRoom}>Create</button>
           </form>
-              <ul>
+              <ul className="all-rooms">
                   {this.state.rooms.map((room, index)=> {return (
-                  <div>
-                  <li key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</li>
-                  <button className ="delroom" onClick={()=>this.deleteRoom(room.key)}> Remove </button>
-                  </div>
+                  <section>
+                  <div  key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</div>
+                  <button className="delroom" onClick={() => this.deleteRoom(room.key)}>Remove</button>
+                  </section>
                 )})}
               </ul>
           </div>
