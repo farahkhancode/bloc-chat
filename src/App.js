@@ -50,6 +50,7 @@ render() {
             firebase={firebase}
             setUser={this.setUser}
             activeUser ={activeUser}
+            
             />
         <aside className="rooms-list">
             <RoomList

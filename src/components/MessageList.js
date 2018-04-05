@@ -63,7 +63,8 @@ render() {
     })
     return(
       <div className="chat-messages">
-        <ul>{messageList}</ul>
+        <ul>{messageList} </ul>
+
         <form className="newmsgform" onSubmit={this.handleSubmit}>
           <input type ="text"
             name="newmessage"

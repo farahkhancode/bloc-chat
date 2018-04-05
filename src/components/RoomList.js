@@ -25,6 +25,7 @@ class RoomList extends Component {
       const room = snapshot.val();
       room.key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) })
+      console.log(snapshot);
    });
 
  }
@@ -39,6 +40,7 @@ handleChange(e){
 
 handleSubmit(e){
     e.preventDefault();
+    if (!this.state.newRoom) { return }
   }
 
 createRoom() {
@@ -47,15 +49,14 @@ createRoom() {
   });
 }
 
-deleteRoom(event){
-  const remainingRooms = this.state.rooms
-  .filter(room=> room.key!== event.target.value);
-  this.setState({room : remainingRooms});
-  console.log("room deleted");
-};
+deleteRoom(roomKey) {
+          const room = this.props.firebase.database().ref('rooms' + roomKey);
+          const remainingRooms= this.state.rooms
+          .filter(room => room.key !== roomKey);
+          this.setState({ rooms: remainingRooms});
+      }
 
   render() {
-    const activeRoom =this.props.activeRoom;
     return (
        <section className="room-list">
           <h2 className="app-title"> Bloc Chat </h2>
@@ -67,8 +68,8 @@ deleteRoom(event){
               <ul className="all-rooms">
                   {this.state.rooms.map((room, index)=> {return (
                   <section>
-                  <div key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</div>
-                  <button onClick= {(e)=>this.deleteRoom(room.key)}>X</button>
+                  <div  key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</div>
+                  <button className="delroom" onClick={() => this.deleteRoom(room.key)}>Remove</button>
                   </section>
                 )})}
               </ul>
