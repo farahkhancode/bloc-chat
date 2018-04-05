@@ -17,6 +17,7 @@ class RoomList extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createRoom = this.createRoom.bind(this);
+    this.deleteRoom = this.deleteRoom.bind(this);
   };
 
     componentDidMount() {
@@ -44,10 +45,15 @@ createRoom() {
     this.roomsRef.push({
       name: this.state.newRoom
   });
-
+}
+deleteRoom(roomKey){
+const room = this.props.firebase.database().ref('rooms' + roomKey);
+const remainingRooms = this.state.rooms
+.filter(room => room.key === !roomKey);
+this.setState({room: remainingRooms});
+}
 
   render() {
-    const activeRoom =this.props.activeRoom;
     return (
        <section className="room-list">
           <h2 className="app-title"> Bloc Chat </h2>
@@ -58,7 +64,10 @@ createRoom() {
           </form>
               <ul>
                   {this.state.rooms.map((room, index)=> {return (
+                  <div>
                   <li key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</li>
+                  <button className ="delroom" onClick={()=>this.deleteRoom(room.key)}> Remove </button>
+                  </div>
                 )})}
               </ul>
           </div>

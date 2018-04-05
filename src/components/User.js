@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './../App.css';
-import * as firebase from 'firebase';
+
 
 class User extends Component{
   constructor(props){
@@ -37,7 +37,7 @@ signOut(){
 
 
 render (){
-  const activeUser = this.props.user
+
   return(
     <section>
       <div>
