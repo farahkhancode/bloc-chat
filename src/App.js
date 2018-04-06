@@ -34,12 +34,13 @@ class App extends Component {
 
 setActiveRoom(room){
   this.setState({activeRoom :room})
-  console.log(room);
+  
 }
 
 setUser(user){
   this.setState({ user : user})
 }
+
 
 render() {
    const displayMessages = this.state.activeRoom;
@@ -50,7 +51,7 @@ render() {
             firebase={firebase}
             setUser={this.setUser}
             activeUser ={activeUser}
-            
+
             />
         <aside className="rooms-list">
             <RoomList
