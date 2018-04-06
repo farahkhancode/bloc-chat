@@ -34,12 +34,13 @@ class App extends Component {
 
 setActiveRoom(room){
   this.setState({activeRoom :room})
-  
+
 }
 
 setUser(user){
   this.setState({ user : user})
 }
+
 
 
 render() {

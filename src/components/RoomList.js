@@ -20,6 +20,7 @@ class RoomList extends Component {
     this.deleteRoom = this.deleteRoom.bind(this);
   };
 
+
     componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
       const room = snapshot.val();
