@@ -42,7 +42,6 @@ setUser(user){
 }
 
 
-
 render() {
    const displayMessages = this.state.activeRoom;
    const activeUser= this.state.user === null ? 'Guest' : this.state.user.displayName;
