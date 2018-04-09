@@ -50,7 +50,6 @@ createRoom() {
 }
 
 deleteRoom(roomKey) {
-          const room = this.props.firebase.database().ref('rooms' + roomKey);
           const remainingRooms= this.state.rooms
           .filter(room => room.key !== roomKey);
           this.setState({ rooms: remainingRooms});
@@ -67,8 +66,8 @@ deleteRoom(roomKey) {
           </form>
               <ul className="all-rooms">
                   {this.state.rooms.map((room, index)=> {return (
-                  <section>
-                  <div  key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</div>
+                  <section key={room.key}>
+                  <div   onClick={(e)=>this.selectRoom(room, e)}>{room.name}</div>
                   <button className="delroom" onClick={() => this.deleteRoom(room.key)}>Remove</button>
                   </section>
                 )})}
