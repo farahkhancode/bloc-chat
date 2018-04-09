@@ -18,6 +18,7 @@ class RoomList extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createRoom = this.createRoom.bind(this);
     this.deleteRoom = this.deleteRoom.bind(this);
+    this.selectRoom = this.selectRoom.bind(this);
   };
 
 
@@ -45,15 +46,15 @@ handleSubmit(e){
   }
 
 createRoom() {
-    this.roomsRef.push({
+      this.roomsRef.push({
       name: this.state.newRoom
-  });
+      });
 }
 
 deleteRoom(roomKey) {
-          const room = this.props.firebase.database().ref('rooms' + roomKey);
           const remainingRooms= this.state.rooms
           .filter(room => room.key !== roomKey);
+        
           this.setState({ rooms: remainingRooms});
       }
 
@@ -68,8 +69,8 @@ deleteRoom(roomKey) {
           </form>
               <ul className="all-rooms">
                   {this.state.rooms.map((room, index)=> {return (
-                  <section>
-                  <div  key={room.key} onClick={(e)=>this.selectRoom(room, e)}>{room.name}</div>
+                  <section key={room.key}>
+                  <div  onClick={()=> this.selectRoom(room)}>{room.name}</div>
                   <button className="delroom" onClick={() => this.deleteRoom(room.key)}>Remove</button>
                   </section>
                 )})}

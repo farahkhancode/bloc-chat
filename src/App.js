@@ -37,8 +37,8 @@ setActiveRoom(room){
 
 }
 
-setUser(user){
-  this.setState({ user : user})
+setUser(username){
+  this.setState({ user : username})
 }
 
 

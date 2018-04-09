@@ -23,8 +23,8 @@ signIn(){
   this.props.firebase.auth().signInWithPopup(provider).then((result) => {
     const user = result.user;
     this.props.setUser(user);
-  console.log("logged in");
-})
+    console.log("logged in");
+  })
 
 }
 
@@ -32,7 +32,7 @@ signOut(){
   this.props.firebase.auth().signOut().then((result) => {
       console.log("logged out");
       this.props.setUser(null);
-        })
+      })
 }
 
 
